@@ -12,9 +12,14 @@
     "sort-packages": true,
     "optimize-autoloader": true
   },
+  "scripts": {
+    "migrations:migrate": "./vendor/bin/doctrine-migrations migrations:migrate --no-interaction",
+    "migrations:generate": "./vendor/bin/doctrine-migrations migrations:generate"
+  },
   "autoload": {
     "psr-4": {
-      "WouterDeSchuyter\\WhenLol\\": "src"
+      "WouterDeSchuyter\\WhenLol\\": "src",
+      "WouterDeSchuyter\\WhenLol\\Migrations\\": "./database/migrations"
     }
   },
   "require": {
