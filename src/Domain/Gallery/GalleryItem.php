@@ -85,6 +85,14 @@ class GalleryItem implements JsonSerializable
     /**
      * @return string
      */
+    public function getUrl(): string
+    {
+        return getenv('APP_URL') . '/' . urlencode($this->text) . '.jpg';
+    }
+
+    /**
+     * @return string
+     */
     public function getAuthorIp(): string
     {
         return $this->authorIp;

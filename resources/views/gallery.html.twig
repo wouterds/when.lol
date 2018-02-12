@@ -10,7 +10,12 @@
             <div class="middle">
                 <ul class="gallery-items">
                     {% for item in items %}
-                    <li>{{ item.id }}</li>
+                    <li class="gallery-item">
+                        <div class="gallery-item__id">
+                            {{ item.id }}
+                        </div>
+                        <img src="{{ item.url }}" alt="{{ item.text }}">
+                    </li>
                     {% endfor %}
                 </ul>
             </div>

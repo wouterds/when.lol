@@ -7,6 +7,7 @@ use Slim\Http\Response;
 use Twig_Error_Loader;
 use Twig_Error_Runtime;
 use Twig_Error_Syntax;
+use WouterDeSchuyter\WhenLol\Domain\Gallery\GalleryItemRepository;
 use WouterDeSchuyter\WhenLol\Infrastructure\View\Twig;
 
 class GalleryHandler
@@ -17,11 +18,18 @@ class GalleryHandler
     private $renderer;
 
     /**
-     * @param Twig $twig
+     * @var GalleryItemRepository
      */
-    public function __construct(Twig $twig)
+    private $galleryItemRepository;
+
+    /**
+     * @param Twig $twig
+     * @param GalleryItemRepository $galleryItemRepository
+     */
+    public function __construct(Twig $twig, GalleryItemRepository $galleryItemRepository)
     {
         $this->renderer = $twig;
+        $this->galleryItemRepository = $galleryItemRepository;
     }
 
     /**
@@ -36,7 +44,7 @@ class GalleryHandler
     {
         return $this->renderer->renderWithResponse($response, 'gallery.html.twig', [
             'title' => 'Gallery - ' . getenv('APP_NAME'),
-            'items' => [],
+            'items' => $this->galleryItemRepository->findAll(),
         ]);
     }
 }

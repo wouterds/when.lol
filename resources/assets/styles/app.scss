@@ -45,6 +45,7 @@ div.middle-container {
   text-align: center;
   display: table-cell;
   padding-bottom: 75px;
+  padding-top: 25px;
 
   div.middle {
     display: inline-block;
@@ -116,6 +117,26 @@ div.middle-container {
       padding: 12px;
       border-top: 0;
     }
+  }
+}
+
+.gallery-item {
+  max-width: 350px;
+  padding: 5px;
+  background: #fff;
+  border: 1px solid #eee;
+  display: inline-block;
+  margin: 15px;
+
+  &__id {
+    background: #333;
+    color: #fff;
+    margin: -5px -5px 5px;
+    padding: 5px;
+  }
+
+  img {
+    width: 100%;
   }
 }
 
