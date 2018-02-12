@@ -34,9 +34,18 @@ class IndexHandler
      */
     public function __invoke(Request $request, Response $response): Response
     {
+        $defaultText = [
+            'when moon',
+            'when review',
+            'when deploy',
+            'when merge',
+            'when beer',
+        ];
+
         return $this->renderer->renderWithResponse($response, 'index.html.twig', [
             'title' => getenv('APP_NAME'),
             'url' => getenv('APP_URL'),
+            'defaultText' => $defaultText[array_rand($defaultText)],
         ]);
     }
 }

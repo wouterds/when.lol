@@ -18,7 +18,7 @@
             <div class="middle">
                 <input id="input" class="input" type="text" placeholder="{{ defaultText }}" autocomplete="off" autofocus>
                 <div class="image-wrapper" >
-                    <img id="image" class="image" src="{{ url }}/when%20lol.jpg" alt="when lol">
+                    <img id="image" class="image" src="{{ url }}/{{ defaultText|url_encode }}.jpg" alt="{{ defaultText }}">
                 </div>
                 <div id="urlInputWrapper" class="url-input-wrapper">
                     <input id="urlInput" class="url-input" type="text" readonly="readonly" data-clipboard-target="#urlInput">
