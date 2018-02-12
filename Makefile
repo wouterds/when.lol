@@ -21,3 +21,6 @@ node_modules: package.json
 	docker run --rm --volume=$(PWD):/code -w=/code node:8-slim npm install
 
 dependencies: vendor node_modules
+
+migrate: vendor
+	docker exec -i whenlol-website-php-fpm php ./composer.phar migrations:migrate
