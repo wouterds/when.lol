@@ -3,3 +3,5 @@
 /vendor
 /package-lock.json
 /docker/data
+/composer-setup.php
+/composer.phar
