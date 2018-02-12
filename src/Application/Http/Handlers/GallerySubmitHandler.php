@@ -2,6 +2,7 @@
 
 namespace WouterDeSchuyter\WhenLol\Application\Http\Handlers;
 
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use WouterDeSchuyter\WhenLol\Domain\Gallery\GalleryItem;
@@ -38,7 +39,11 @@ class GallerySubmitHandler
                 $request->getHeaderLine('USER_AGENT')
             );
 
-            $this->galleryItemRepository->add($galleryItem);
+            try {
+                $this->galleryItemRepository->add($galleryItem);
+            } catch (UniqueConstraintViolationException $e) {
+                return $response->withRedirect('/gallery');
+            }
         }
 
         return $response->withRedirect('/gallery');

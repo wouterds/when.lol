@@ -2,10 +2,13 @@
 
 namespace WouterDeSchuyter\WhenLol\Domain\Gallery;
 
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+
 interface GalleryItemRepository
 {
     /**
      * @param GalleryItem $galleryItem
+     * @throws UniqueConstraintViolationException
      */
     public function add(GalleryItem $galleryItem);
 

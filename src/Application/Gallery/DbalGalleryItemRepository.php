@@ -3,6 +3,7 @@
 namespace WouterDeSchuyter\WhenLol\Application\Gallery;
 
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use WouterDeSchuyter\WhenLol\Domain\Gallery\GalleryItem;
 use WouterDeSchuyter\WhenLol\Domain\Gallery\GalleryItemRepository;
 
