@@ -25,6 +25,7 @@ class Version20180212141945 extends AbstractMigration
         $table->addColumn('created_at', 'datetime')->setDefault('CURRENT_TIMESTAMP');
         $table->addColumn('updated_at', 'datetime')->setNotnull(false);
         $table->setPrimaryKey(['id']);
+        $table->addUniqueIndex(['text']);
         $table->addIndex(['author_ip']);
         $table->addIndex(['author_user_agent']);
         $table->addIndex(['created_at']);
