@@ -19,3 +19,5 @@ vendor: composer.phar composer.json composer.lock
 
 node_modules: package.json
 	docker run --rm --volume=$(PWD):/code -w=/code node:8-slim npm install
+
+dependencies: vendor node_modules
