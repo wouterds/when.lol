@@ -11,9 +11,9 @@
                 <ul class="gallery-items">
                     {% for item in items %}
                     <li class="gallery-item">
-                        <div class="gallery-item__id">
+                        <a href="/gallery/{{ item.id }}" class="gallery-item__id">
                             {{ item.id }}
-                        </div>
+                        </a>
                         <div class="gallery-item__image">
                             <img src="{{ item.url }}" alt="{{ item.text }}">
                         </div>

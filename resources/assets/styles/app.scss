@@ -155,8 +155,10 @@ div.middle-container {
   &__id {
     background: #333;
     color: #fff;
-    margin: -5px -5px 5px;
     padding: 5px;
+    text-decoration: none;
+    margin: -5px -5px 10px;
+    display: block;
   }
 }
 
