@@ -53,6 +53,20 @@ class GalleryItem implements JsonSerializable
     }
 
     /**
+     * @param array $data
+     * @return GalleryItem
+     */
+    public static function fromArray(array $data): self
+    {
+        $galleryItem = new GalleryItem($data['text'], $data['author_ip'], $data['author_user_agent']);
+        $galleryItem->id = new GalleryItemId(!empty($data['id']) ? $data['id'] : null);
+        $galleryItem->createdAt = !empty($data['created_at']) ? new DateTime($data['created_at']) : null;
+        $galleryItem->updatedAt = !empty($data['updated_at']) ? new DateTime($data['updated_at']) : null;
+
+        return $galleryItem;
+    }
+
+    /**
      * @return GalleryItemId
      */
     public function getId(): GalleryItemId
