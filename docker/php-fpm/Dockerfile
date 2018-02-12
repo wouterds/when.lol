@@ -15,3 +15,6 @@ RUN apk add --no-cache \
 
 # Copy project
 COPY ./ /code
+
+# Working directory
+WORKDIR /code

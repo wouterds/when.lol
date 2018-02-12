@@ -6,3 +6,6 @@ COPY ./docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 
 # Copy project
 COPY ./ /code
+
+# Working directory
+WORKDIR /code
