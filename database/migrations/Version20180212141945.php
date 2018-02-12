@@ -21,7 +21,7 @@ class Version20180212141945 extends AbstractMigration
         $table->addColumn('id', 'uuid');
         $table->addColumn('text', 'string')->setLength(64);
         $table->addColumn('author_ip', 'string')->setLength(64);
-        $table->addColumn('author_user_agent', 'text')->setLength(1024);
+        $table->addColumn('author_user_agent', 'string')->setLength(255);
         $table->addColumn('created_at', 'datetime')->setDefault('CURRENT_TIMESTAMP');
         $table->addColumn('updated_at', 'datetime')->setNotnull(false);
         $table->setPrimaryKey(['id']);
