@@ -1,0 +1,112 @@
+@import "_reset.scss";
+
+body,
+html,
+#wrapper {
+  height: 100%;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  background: #fafafa;
+}
+
+.wrapper {
+  display: table;
+  width: 100%;
+  position: relative;
+  font-size: 1.4em;
+  padding: 0 25px;
+  box-sizing: border-box;
+}
+
+div.middle-container {
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+  padding-bottom: 75px;
+
+  div.middle {
+    display: inline-block;
+    font-weight: 300;
+    color: #333;
+
+    .input,
+    .url-input,
+    .image {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .image-wrapper {
+        background: #fff;
+        padding: 15px;
+        border-radius: 3px;
+        border: 1px solid #eee;
+        margin-top: 5px;
+
+        .image {
+          border-radius: 3px;
+        }
+    }
+
+    .input,
+    .url-input {
+      background: #fff;
+      padding: 15px;
+      font-size: 1.4em;
+      border-radius: 3px;
+      font-weight: 600;
+      color: #4e505c;
+      border: 1px solid #eee;
+
+      &:focus {
+        color: #2c2e38;
+      }
+    }
+
+    .url-input-wrapper {
+      position: relative;
+    }
+
+    .url-input {
+      font-weight: 500;
+      transition: 200ms background ease-in-out;
+      margin: 0;
+      font-size: 1.2em;
+      padding: 12px;
+    }
+  }
+}
+
+::placeholder {
+  color: #aaa;
+}
+
+#image,
+input {
+  width: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+input {
+  outline: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 1.2em;
+  font-weight: 300;
+  display: inline-block;
+  padding: 5px;
+  box-sizing: border-box;
+  margin: 10px 0;
+  color: #999;
+}
+
+.url-input {
+  &::selection {
+    background: #406ffe;
+    color: #fff;
+  }
+}

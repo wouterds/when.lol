@@ -1,0 +1,4 @@
+/.env
+/public/static
+/vendor
+/package-lock.json

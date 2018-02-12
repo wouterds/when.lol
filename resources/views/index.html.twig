@@ -1,0 +1,21 @@
+{% extends '_base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <div id="wrapper" class="wrapper" data-app-url="{{ url }}">
+        <div class="middle-container">
+            <div class="middle">
+                <input id="input" class="input" type="text" placeholder="when lol" autocomplete="off" autofocus>
+                <br>
+                <div class="image-wrapper" >
+                    <img id="image" class="image" src="{{ url }}/when%20lol.jpg" alt="when lol">
+                </div>
+                <br>
+                <div id="urlInputWrapper" class="url-input-wrapper">
+                    <input id="urlInput" class="url-input" type="text" readonly="readonly" data-clipboard-target="#urlInput">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

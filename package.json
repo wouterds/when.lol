@@ -1,0 +1,24 @@
+{
+  "name": "whenlol-website",
+  "description": "kabouterwesley.be website",
+  "version": "2.4.1",
+  "author": "Wouter De Schuyter <wouter.de.schuyter@gmail.com>",
+  "dependencies": {
+    "clipboard": "^1.7.1",
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.4",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-function-bind": "^6.22.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-minify": "^0.2.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1"
+  }
+}

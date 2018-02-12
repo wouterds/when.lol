@@ -1,0 +1,31 @@
+{
+  "name": "whenlol-website",
+  "description": "when.lol website",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Wouter De Schuyter",
+      "email": "wouter.de.schuyter@gmail.com"
+    }
+  ],
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "autoload": {
+    "psr-4": {
+      "WouterDeSchuyter\\WhenLol\\": "src"
+    }
+  },
+  "require": {
+    "jenssegers/lean": "^0.2.2",
+    "league/container": "^2.4",
+    "slim/slim": "^3.8",
+    "stil/gd-text": "^1.1",
+    "twig/twig": "^2.4",
+    "vlucas/phpdotenv": "^2.4"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^3.3"
+  }
+}

@@ -1,0 +1,25 @@
+<?php
+
+namespace WouterDeSchuyter\WhenLol\Application;
+
+use League\Container\Container as LeagueContainer;
+use League\Container\ReflectionContainer;
+use WouterDeSchuyter\WhenLol\Application\Http\ServiceProvider as HttpServiceProvider;
+use WouterDeSchuyter\WhenLol\Infrastructure\View\ServiceProvider as ViewServiceProvider;
+
+class Container extends LeagueContainer
+{
+    /**
+     * @return Container
+     */
+    public static function load()
+    {
+        $container = new static();
+        $container->delegate(new ReflectionContainer());
+
+        $container->addServiceProvider(HttpServiceProvider::class);
+        $container->addServiceProvider(ViewServiceProvider::class);
+
+        return $container;
+    }
+}
