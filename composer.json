@@ -29,6 +29,7 @@
   },
   "require-dev": {
     "doctrine/migrations": "^1.6",
+    "ramsey/uuid-doctrine": "^1.4",
     "symfony/var-dumper": "^3.3"
   }
 }
