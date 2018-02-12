@@ -17,4 +17,10 @@ interface GalleryItemRepository
      * @return GalleryItem[]
      */
     public function findAll(string $order = 'DESC'): array;
+
+    /**
+     * @param GalleryItemId $id
+     * @return GalleryItem|null
+     */
+    public function findById(GalleryItemId $id): ?GalleryItem;
 }

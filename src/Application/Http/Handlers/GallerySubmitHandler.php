@@ -30,7 +30,7 @@ class GallerySubmitHandler
      */
     public function __invoke(Request $request, Response $response): Response
     {
-        $text = $request->getParam('text');
+        $text = strtolower(trim($request->getParam('text')));
 
         if (!empty($text)) {
             $galleryItem = new GalleryItem(

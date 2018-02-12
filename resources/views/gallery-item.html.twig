@@ -1,0 +1,26 @@
+{% extends '_base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <div id="wrapper" class="wrapper" data-app-url="{{ url }}">
+        <div class="middle-container">
+            {% include 'includes/_navigation.html.twig' %}
+
+            <div class="middle">
+                <div class="gallery-item gallery-item--big">
+                    <a href="/gallery/{{ item.id }}" class="gallery-item__id">
+                        {{ item.id }}
+                    </a>
+                    <div class="gallery-item__image">
+                        <img src="{{ item.url }}" alt="{{ item.text }}">
+                    </div>
+
+                    <div id="urlInputWrapper" class="url-input-wrapper url-input-wrapper--detail">
+                        <input id="urlInput" class="url-input" type="text" value="{{ item.url }}" readonly="readonly">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

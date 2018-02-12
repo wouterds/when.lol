@@ -5,6 +5,7 @@ namespace WouterDeSchuyter\WhenLol\Application\Gallery;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use WouterDeSchuyter\WhenLol\Domain\Gallery\GalleryItem;
+use WouterDeSchuyter\WhenLol\Domain\Gallery\GalleryItemId;
 use WouterDeSchuyter\WhenLol\Domain\Gallery\GalleryItemRepository;
 
 class DbalGalleryItemRepository implements GalleryItemRepository
@@ -68,5 +69,24 @@ class DbalGalleryItemRepository implements GalleryItemRepository
         }
 
         return $data;
+    }
+
+    /**
+     * @param GalleryItemId $galleryItemId
+     * @return GalleryItem|null
+     */
+    public function findById(GalleryItemId $galleryItemId): ?GalleryItem
+    {
+        $query = $this->connection->createQueryBuilder();
+        $query->select('*');
+        $query->from(self::TABLE);
+        $query->where('id = ' . $query->createNamedParameter($galleryItemId));
+        $data = $query->execute()->fetch();
+
+        if (empty($data)) {
+            return null;
+        }
+
+        return GalleryItem::fromArray($data);
     }
 }
