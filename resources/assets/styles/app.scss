@@ -61,9 +61,18 @@ div.middle-container {
 
     .image-wrapper {
       background: #fff;
-      padding: 15px;
+      margin: 10px 0;
       border: 1px solid #eee;
-      margin-top: 10px;
+      padding-bottom: 75%;
+      position: relative;
+      width: 640px;
+
+      img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 640px;
+      }
     }
 
     .input-wrapper {
