@@ -2,3 +2,4 @@
 /public/static
 /vendor
 /package-lock.json
+/docker/data
