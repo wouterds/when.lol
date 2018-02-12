@@ -28,13 +28,14 @@ class DbalGalleryItemRepository implements GalleryItemRepository
      */
     public function add(GalleryItem $galleryItem)
     {
-        $this->connection->insert(self::TABLE, [
-            'id' => $galleryItem->getId(),
-            'text' => $galleryItem->getText(),
-            'author_ip' => $galleryItem->getAuthorIp(),
-            'author_user_agent' => $galleryItem->getAuthorUserAgent(),
-            'created_at' => 'NOW()',
-        ]);
+        $query = $this->connection->createQueryBuilder();
+        $query->insert(self::TABLE);
+        $query->setValue('id', $query->createNamedParameter($galleryItem->getId()));
+        $query->setValue('text', $query->createNamedParameter($galleryItem->getText()));
+        $query->setValue('author_ip', $query->createNamedParameter($galleryItem->getAuthorIp()));
+        $query->setValue('author_user_agent', $query->createNamedParameter($galleryItem->getAuthorUserAgent()));
+        $query->setValue('created_at', 'NOW()');
+        $query->execute();
     }
 
     /**
