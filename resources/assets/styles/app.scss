@@ -127,16 +127,27 @@ div.middle-container {
   border: 1px solid #eee;
   display: inline-block;
   margin: 15px;
+  position: relative;
+
+  &__image {
+    position: relative;
+    content: '';
+    padding-bottom: 75%;
+    background: #fefefe;
+
+    img {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
 
   &__id {
     background: #333;
     color: #fff;
     margin: -5px -5px 5px;
     padding: 5px;
-  }
-
-  img {
-    width: 100%;
   }
 }
 
