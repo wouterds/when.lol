@@ -5,6 +5,7 @@ services:
     build:
       context: ./..
       dockerfile: ./docker/nginx/Dockerfile
+    container_name: whenlol-website-nginx
     env_file:
       - ./../.env
     ports:
@@ -17,6 +18,7 @@ services:
     build:
       context: ./..
       dockerfile: ./docker/php-fpm/Dockerfile
+    container_name: whenlol-website-php-fpm
     env_file:
       - ./../.env
     volumes:
@@ -24,6 +26,7 @@ services:
 
   mysql:
     image: mysql:5.7
+    container_name: whenlol-website-mysql
     env_file:
       - ./../.env
     ports:
