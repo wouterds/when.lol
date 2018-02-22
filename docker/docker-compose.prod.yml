@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+  nginx:
+    image: docker.wouterdeschuyter.be/internal-whenlol-website-nginx
+    restart: unless-stopped
+    environment:
+      - VIRTUAL_HOST=when.lol
+      - LETSENCRYPT_HOST=when.lol
+      - LETSENCRYPT_EMAIL=wouter.de.schuyter@gmail.com
+    networks:
+      - default
+      - nginxproxy_default
+
+  php-fpm:
+    image: docker.wouterdeschuyter.be/internal-whenlol-website-php-fpm
+    restart: unless-stopped
+    env_file:
+      - ./docker.env
+      - ./docker.prod.env
+    volumes:
+      - ./docker.env:/code/.env:ro
+    external_links:
+      - mariadb
+    networks:
+      - default
+      - databaseserver_default
+
+networks:
+  databaseserver_default:
+    external: true
+  nginxproxy_default:
+    external: true

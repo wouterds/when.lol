@@ -5,3 +5,4 @@
 /docker/data
 /composer-setup.php
 /composer.phar
+/.build-*
