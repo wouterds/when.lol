@@ -42,9 +42,12 @@ class GalleryHandler
      */
     public function __invoke(Request $request, Response $response): Response
     {
+        $ua = $request->getHeaderLine('User-Agent');
+
         return $this->renderer->renderWithResponse($response, 'gallery.html.twig', [
             'title' => 'Gallery - ' . getenv('APP_NAME'),
             'items' => $this->galleryItemRepository->findAll(),
+            'bot' => stripos($ua, 'Twitterbot') !== false || stripos($ua, 'Slackbot') !== false,
         ]);
     }
 }

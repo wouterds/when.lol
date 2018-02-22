@@ -3,7 +3,7 @@
 {% block title %}{{ item.text }} - {{ title }}{% endblock %}
 {% block twitterTitle %}{{ item.text }} - {{ title }}{% endblock %}
 {% block twitterDescription %}{{ item.text }}{% endblock %}
-{% block twitterImage %}{{ item.url }}{% endblock %}
+{% block twitterImage %}{{ item.url }}{% if bot %}?direct=1{% endif %}{% endblock %}
 {% block twitterUrl %}{{ url }}/gallery/{{ item.id }}{% endblock %}
 
 {% block body %}
@@ -17,7 +17,7 @@
                         {{ item.id }}
                     </a>
                     <div class="gallery-item__image">
-                        <img src="{{ item.url }}" alt="{{ item.text }}">
+                        <img src="{{ item.url }}{% if bot %}?direct=1{% endif %}" alt="{{ item.text }}">
                     </div>
 
                     <div id="urlInputWrapper" class="url-input-wrapper url-input-wrapper--detail">

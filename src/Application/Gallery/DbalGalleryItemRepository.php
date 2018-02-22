@@ -89,4 +89,23 @@ class DbalGalleryItemRepository implements GalleryItemRepository
 
         return GalleryItem::fromArray($data);
     }
+
+    /**
+     * @param string $text
+     * @return GalleryItem|null
+     */
+    public function findByText(string $text): ?GalleryItem
+    {
+        $query = $this->connection->createQueryBuilder();
+        $query->select('*');
+        $query->from(self::TABLE);
+        $query->where('text = ' . $query->createNamedParameter(strtolower($text)));
+        $data = $query->execute()->fetch();
+
+        if (empty($data)) {
+            return null;
+        }
+
+        return GalleryItem::fromArray($data);
+    }
 }

@@ -41,10 +41,13 @@ class IndexHandler
             'when beer o\'clock?',
         ];
 
+        $ua = $request->getHeaderLine('User-Agent');
+
         return $this->renderer->renderWithResponse($response, 'index.html.twig', [
             'title' => getenv('APP_NAME'),
             'url' => getenv('APP_URL'),
             'defaultText' => $defaultText[array_rand($defaultText)],
+            'bot' => stripos($ua, 'Twitterbot') !== false || stripos($ua, 'Slackbot') !== false,
         ]);
     }
 }

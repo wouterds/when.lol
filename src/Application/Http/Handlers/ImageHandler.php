@@ -2,10 +2,14 @@
 
 namespace WouterDeSchuyter\WhenLol\Application\Http\Handlers;
 
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use GDText\Box;
 use GDText\Color;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use WouterDeSchuyter\WhenLol\Domain\Gallery\GalleryItem;
+use WouterDeSchuyter\WhenLol\Domain\Gallery\GalleryItemId;
+use WouterDeSchuyter\WhenLol\Domain\Gallery\GalleryItemRepository;
 
 class ImageHandler
 {
@@ -15,6 +19,19 @@ class ImageHandler
     private const HEIGHT = 480;
 
     /**
+     * @var GalleryItemRepository
+     */
+    private $galleryItemRepository;
+
+    /**
+     * @param GalleryItemRepository $galleryItemRepository
+     */
+    public function __construct(GalleryItemRepository $galleryItemRepository)
+    {
+        $this->galleryItemRepository = $galleryItemRepository;
+    }
+
+    /**
      * @param Request $request
      * @param Response $response
      * @param string $text
@@ -22,6 +39,11 @@ class ImageHandler
      */
     public function __invoke(Request $request, Response $response, string $text): Response
     {
+        $galleryItem = $this->botCheck($request, $text);
+        if ($galleryItem) {
+            return $response->withRedirect('/gallery/' . $galleryItem->getId());
+        }
+
         $img = $this->loadJpgFromFile(self::IMAGE);
 
         if (!empty($text)) {
@@ -60,7 +82,6 @@ class ImageHandler
         $img = @imagecreatefromjpeg($path);
 
         if (!$img) {
-
             $img = imagecreatetruecolor(150, 30);
             $bgc = imagecolorallocate($img, 255, 255, 255);
             $tc = imagecolorallocate($img, 0, 0, 0);
@@ -90,5 +111,45 @@ class ImageHandler
         );
 
         return $canvas;
+    }
+
+    /**
+     * @param string $text
+     * @param Request $request
+     * @return GalleryItem|null
+     */
+    private function botCheck(Request $request, string $text): ?GalleryItem
+    {
+        if (!empty($request->getParam('direct'))) {
+            return null;
+        }
+
+        $ua = $request->getHeaderLine('User-Agent');
+
+        if (stripos($ua, 'Twitterbot') !== false || stripos($ua, 'Slackbot') !== false) {
+            $galleryItem = $this->galleryItemRepository->findByText($text);
+
+            if ($galleryItem) {
+                return $galleryItem;
+            }
+
+            $galleryItem = new GalleryItem(
+                $text,
+                $request->getHeaderLine('CF-Connecting-IP') ?
+                    $request->getHeaderLine('CF-Connecting-IP') :
+                    $request->getServerParam('REMOTE_ADDR'),
+                $request->getHeaderLine('USER_AGENT')
+            );
+
+            try {
+                $this->galleryItemRepository->add($galleryItem);
+            } catch (UniqueConstraintViolationException $e) {
+                return null;
+            }
+
+            return $galleryItem;
+        }
+
+        return null;
     }
 }

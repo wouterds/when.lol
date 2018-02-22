@@ -23,4 +23,10 @@ interface GalleryItemRepository
      * @return GalleryItem|null
      */
     public function findById(GalleryItemId $id): ?GalleryItem;
+
+    /**
+     * @param string $text
+     * @return GalleryItem|null
+     */
+    public function findByText(string $text): ?GalleryItem;
 }

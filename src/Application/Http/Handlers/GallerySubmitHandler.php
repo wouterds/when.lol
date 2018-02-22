@@ -35,7 +35,9 @@ class GallerySubmitHandler
         if (!empty($text)) {
             $galleryItem = new GalleryItem(
                 $text,
-                $request->getServerParam('REMOTE_ADDR'),
+                $request->getHeaderLine('CF-Connecting-IP') ?
+                    $request->getHeaderLine('CF-Connecting-IP') :
+                    $request->getServerParam('REMOTE_ADDR'),
                 $request->getHeaderLine('USER_AGENT')
             );
 

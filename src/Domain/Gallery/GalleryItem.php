@@ -79,7 +79,7 @@ class GalleryItem implements JsonSerializable
      */
     public function getText(): string
     {
-        return $this->text;
+        return strtolower($this->text);
     }
 
     /**

@@ -44,10 +44,13 @@ class GalleryItemHandler
      */
     public function __invoke(Request $request, Response $response, string $id): Response
     {
+        $ua = $request->getHeaderLine('User-Agent');
+
         return $this->renderer->renderWithResponse($response, 'gallery-item.html.twig', [
             'title' => getenv('APP_NAME'),
             'url' => getenv('APP_URL'),
             'item' => $this->galleryItemRepository->findById(new GalleryItemId($id)),
+            'bot' => stripos($ua, 'Twitterbot') !== false || stripos($ua, 'Slackbot') !== false,
         ]);
     }
 }

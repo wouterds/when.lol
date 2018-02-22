@@ -16,7 +16,7 @@
                             {{ item.id }}
                         </a>
                         <div class="gallery-item__image">
-                            <img src="{{ item.url }}" alt="{{ item.text }}">
+                            <img src="{{ item.url }}{% if bot %}?direct=1{% endif %}" alt="{{ item.text }}">
                         </div>
                     </li>
                     {% endfor %}

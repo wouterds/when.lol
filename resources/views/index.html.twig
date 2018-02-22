@@ -3,7 +3,7 @@
 {% block title %}{{ defaultText }} - {{ title }}{% endblock %}
 {% block twitterTitle %}{{ defaultText }} - {{ title }}{% endblock %}
 {% block twitterDescription %}{{ defaultText }}{% endblock %}
-{% block twitterImage %}{{ url }}/{{ defaultText|url_encode }}.jpg{% endblock %}
+{% block twitterImage %}{{ url }}/{{ defaultText|url_encode }}.jpg{% if bot %}?direct=1{% endif %}{% endblock %}
 {% block twitterUrl %}{{ url }}/{% endblock %}
 
 {% block body %}
@@ -26,7 +26,7 @@
                         <input type="submit" class="submit" value="Submit">
                     </div>
                     <div class="image-wrapper">
-                        <img id="image" class="image" src="{{ url }}/{{ defaultText|url_encode }}.jpg" alt="{{ defaultText }}">
+                        <img id="image" class="image" src="{{ url }}/{{ defaultText|url_encode }}.jpg{% if bot %}?direct=1{% endif %}" alt="{{ defaultText }}">
                     </div>
                     <div id="urlInputWrapper" class="url-input-wrapper">
                         <input id="urlInput" class="url-input" type="text" readonly="readonly" data-clipboard-target="#urlInput">
