@@ -13,6 +13,18 @@
 <body>
     {% block body %}{% endblock %}
 
+    <footer class="footer">
+        <div class="left">
+            &copy; {{ 'now'|date('Y') }}
+            <a href="https://when.lol/">https://when.lol/</a>,
+            another useless project by <a href="https://wouterdeschuyter.be/" title="Wouter De Schuyter">wouterds</a>
+        </div>
+
+        <div class="right">
+            <a href="https://t.me/whenlol">Telegram</a>
+        </div>
+    </footer>
+
     <script type="text/javascript" src="/static/js/vendor/jquery.min.js"></script>
     <script type="text/javascript" src="/static/js/app.js"></script>
 </body>

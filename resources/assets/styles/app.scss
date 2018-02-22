@@ -11,6 +11,25 @@ body {
   background: #fafafa;
 }
 
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 1.2em;
+
+  .left {
+    float: left;
+    display: inline-block;
+  }
+
+  .right {
+    float: right;
+    display: inline-block;
+  }
+}
+
 .navigation {
   margin-bottom: 25px;
 
