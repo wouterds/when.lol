@@ -47,7 +47,7 @@ class IndexHandler
             'title' => getenv('APP_NAME'),
             'url' => getenv('APP_URL'),
             'defaultText' => $defaultText[array_rand($defaultText)],
-            'bot' => stripos($ua, 'Twitterbot') !== false || stripos($ua, 'Slackbot') !== false,
+            'bot' => stripos($ua, 'TelegramBot') !== false || stripos($ua, 'Twitterbot') !== false || stripos($ua, 'Slackbot') !== false,
         ]);
     }
 }

@@ -126,7 +126,7 @@ class ImageHandler
 
         $ua = $request->getHeaderLine('User-Agent');
 
-        if (stripos($ua, 'Twitterbot') !== false || stripos($ua, 'Slackbot') !== false) {
+        if (stripos($ua, 'TelegramBot') !== false || stripos($ua, 'Twitterbot') !== false || stripos($ua, 'Slackbot') !== false) {
             $galleryItem = $this->galleryItemRepository->findByText($text);
 
             if ($galleryItem) {

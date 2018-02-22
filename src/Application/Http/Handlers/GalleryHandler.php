@@ -47,7 +47,7 @@ class GalleryHandler
         return $this->renderer->renderWithResponse($response, 'gallery.html.twig', [
             'title' => 'Gallery - ' . getenv('APP_NAME'),
             'items' => $this->galleryItemRepository->findAll(),
-            'bot' => stripos($ua, 'Twitterbot') !== false || stripos($ua, 'Slackbot') !== false,
+            'bot' => stripos($ua, 'TelegramBot') !== false || stripos($ua, 'Twitterbot') !== false || stripos($ua, 'Slackbot') !== false,
         ]);
     }
 }

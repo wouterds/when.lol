@@ -50,7 +50,7 @@ class GalleryItemHandler
             'title' => getenv('APP_NAME'),
             'url' => getenv('APP_URL'),
             'item' => $this->galleryItemRepository->findById(new GalleryItemId($id)),
-            'bot' => stripos($ua, 'Twitterbot') !== false || stripos($ua, 'Slackbot') !== false,
+            'bot' => stripos($ua, 'TelegramBot') !== false || stripos($ua, 'Twitterbot') !== false || stripos($ua, 'Slackbot') !== false,
         ]);
     }
 }
