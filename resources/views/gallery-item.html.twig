@@ -1,6 +1,10 @@
 {% extends '_base.html.twig' %}
 
-{% block title %}{{ title }}{% endblock %}
+{% block title %}{{ item.text }} - {{ title }}{% endblock %}
+{% block twitterTitle %}{{ item.text }} - {{ title }}{% endblock %}
+{% block twitterDescription %}{{ item.text }}{% endblock %}
+{% block twitterImage %}{{ item.url }}{% endblock %}
+{% block twitterUrl %}{{ url }}/gallery/{{ item.id }}{% endblock %}
 
 {% block body %}
     <div id="wrapper" class="wrapper" data-app-url="{{ url }}">

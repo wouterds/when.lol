@@ -45,7 +45,8 @@ class GalleryItemHandler
     public function __invoke(Request $request, Response $response, string $id): Response
     {
         return $this->renderer->renderWithResponse($response, 'gallery-item.html.twig', [
-            'title' => 'Gallery - ' . getenv('APP_NAME'),
+            'title' => getenv('APP_NAME'),
+            'url' => getenv('APP_URL'),
             'item' => $this->galleryItemRepository->findById(new GalleryItemId($id)),
         ]);
     }
