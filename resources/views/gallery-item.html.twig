@@ -1,7 +1,7 @@
 {% extends '_base.html.twig' %}
 
 {% block title %}{{ item.text }} - {{ title }}{% endblock %}
-{% block twitterTitle %}{{ item.text }} - {{ title }}{% endblock %}
+{% block twitterTitle %}{{ title }}{% endblock %}
 {% block twitterDescription %}{{ item.text }}{% endblock %}
 {% block twitterImage %}{{ item.url }}{% if bot %}?direct=1{% endif %}{% endblock %}
 {% block twitterUrl %}{{ url }}/gallery/{{ item.id }}{% endblock %}
