@@ -36,10 +36,9 @@ class IndexHandler
     {
         $defaultText = [
             'when moon?',
-            'when review?',
-            'when deploy?',
-            'when merge?',
-            'when beer?',
+            'when lambo?',
+            'when stop rekt?',
+            'when beer o\'clock?',
         ];
 
         return $this->renderer->renderWithResponse($response, 'index.html.twig', [
