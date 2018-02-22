@@ -1,8 +1,7 @@
 {% extends '_base.html.twig' %}
 
 {% block title %}{{ defaultText }} - {{ title }}{% endblock %}
-{% block twitterTitle %}{{ title }}{% endblock %}
-{% block twitterDescription %}{{ defaultText }}{% endblock %}
+{% block twitterTitle %}{{ defaultText }}{% endblock %}
 {% block twitterImage %}{{ url }}/{{ defaultText|url_encode }}.jpg{% if bot %}?direct=1{% endif %}{% endblock %}
 {% block twitterUrl %}{{ url }}/{% endblock %}
 
